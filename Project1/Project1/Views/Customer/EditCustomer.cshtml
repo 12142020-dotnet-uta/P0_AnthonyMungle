@@ -1,0 +1,55 @@
+﻿@model ModelLayer.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+<body style="background-color:bisque">
+    <h1>Edit Customer</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <br />
+            <img class="img-responsive" src="@Model.JpgString" alt="No Image Found" style="height:100px" />
+            <form asp-action="EditedCustomer" enctype="multipart/form-data" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <strong><label asp-for="CustomerId" class="control-label"></label></strong><br />
+                    @Html.HiddenFor(model => model.CustomerId)
+                    @Html.DisplayFor(model => model.CustomerId)
+
+                </div>
+                <div class="form-group">
+                    <strong><label asp-for="Uname" class="control-label"></label></strong><br />
+                    @Html.HiddenFor(model => model.Uname)
+                    @Html.DisplayFor(model => model.Uname)
+
+                </div>
+                <div class="form-group">
+                    <strong><label asp-for="Fname" class="control-label"></label></strong>
+                    <input asp-for="Fname" class="form-control" />
+                    <span asp-validation-for="Fname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <strong><label asp-for="Lname" class="control-label"></label></strong>
+                    <input asp-for="Lname" class="form-control" />
+                    <span asp-validation-for="Lname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <strong><label asp-for="IformFileImage" class="control-label"></label></strong>
+                    <input asp-for="IformFileImage" type="file" id="file" class="form-control" />
+                    <span asp-validation-for="IformFileImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="button" value="Back" class="btn btn-primary" onclick="history.back()">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

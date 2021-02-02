@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Project1Images\Bacon.jpg" />
+    <Content Remove="wwwroot\Project1Images\Beans.jpeg" />
+    <Content Remove="wwwroot\Project1Images\orange.jpg" />
+    <Content Remove="wwwroot\Project1Images\pear.jpg" />
+    <Content Remove="wwwroot\Project1Images\REDAPPLE.jpg" />
+    <Content Remove="wwwroot\Project1Images\WaterBottle.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj" />
+    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Project1Images\Bacon.jpg" />
+    <None Include="wwwroot\Project1Images\Beans.jpeg" />
+    <None Include="wwwroot\Project1Images\orange.jpg" />
+    <None Include="wwwroot\Project1Images\pear.jpg" />
+    <None Include="wwwroot\Project1Images\REDAPPLE.jpg" />
+    <None Include="wwwroot\Project1Images\WaterBottle.jpg" />
+  </ItemGroup>
+
+</Project>

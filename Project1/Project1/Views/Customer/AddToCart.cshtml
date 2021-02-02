@@ -1,0 +1,51 @@
+﻿@model ModelLayer.ViewModels.AmountToAddViewModel
+
+@{
+    ViewData["Title"] = "Add To Cart";
+}
+<body style="background-color:bisque">
+    <h1>AddToCart</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CanBeAdded">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <strong>@Html.DisplayFor(model => model.Product)</strong>
+                </div>
+                <div class="form-group">
+                    <img class="img-responsive" src="@Model.JpgString" alt="No Image Found" style="height:100px" /><br />
+                    @Html.DisplayFor(model => model.discription)
+                </div>
+                <div class="form-group">
+                    <label asp-for="amount" class="control-label"></label>
+                    <input asp-for="amount" class="form-control" />
+                    <span asp-validation-for="amount" class="text-danger"></span>
+                </div>
+                @Html.HiddenFor(Model => Model.stock)
+                @Html.HiddenFor(Model => Model.JpgString)
+                @Html.HiddenFor(Model => Model.inventory)
+                @Html.HiddenFor(Model => Model.location)
+                @Html.HiddenFor(Model => Model.Product)
+                @Html.HiddenFor(Model => Model.CustomerId)
+                @Html.HiddenFor(Model => Model.discription)
+                <div class="form-group">
+                    <div class="text-danger">
+                        <p>@Html.ValidationMessage("Failure") </p>
+                    </div>
+
+                    <input type="submit" value="Add To Cart" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-controller="Customer" asp-action="InventoryList" asp-route-InventoryList="@Model.location" asp-route-customerGuid="@Model.CustomerId" method="get">Back to List</a>
+    </div>
+</body>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

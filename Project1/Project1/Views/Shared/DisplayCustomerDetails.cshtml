@@ -1,0 +1,54 @@
+﻿@model ModelLayer.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Display Customer Details";
+}
+<body style="background-color:bisque">
+   
+    <div>
+        <h4>Customer Home</h4>
+        <hr />
+        <p>@Html.ValidationMessage("Delete") </p>
+        <p>@Html.ValidationMessage("Order") </p>
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CustomerId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Uname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Uname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Fname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Lname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Lname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.JpgString)
+            </dt>
+            <dd class="col-sm-10">
+                <img class="img-responsive" src="@Model.JpgString" alt="No Image Found" style="height:100px" />
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <!--Calls the EditCustomer(Guid) from CustomerController-->
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="EditCustomer" asp-route-customerGuid="@Model.CustomerId">Edit Customer</a>
+
+        <a class="btn btn-dark" asp-controller="Customer" asp-action="StartLocationMenu" asp-route-customerGuid="@Model.CustomerId">Start Shopping</a><!--Might need customerID LAter-->
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="ViewCart" asp-route-customerGuid="@Model.CustomerId">View Cart</a>
+    </div>
+</body>

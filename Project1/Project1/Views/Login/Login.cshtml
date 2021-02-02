@@ -1,0 +1,42 @@
+﻿@model ModelLayer.ViewModels.CreateCustomerViewModel
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h4>Please Type your Credintials</h4>
+<div class="text-danger">@Html.ValidationMessage("Failure")</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Uname" class="control-label"></label>
+                <input asp-for="Uname" class="form-control" />
+                <span asp-validation-for="Uname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="button" value="Back" class ="btn btn-primary" onclick="history.back()">   
+            </div>
+
+        </form> 
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

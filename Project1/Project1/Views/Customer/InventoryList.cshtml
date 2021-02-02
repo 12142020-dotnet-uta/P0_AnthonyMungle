@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ModelLayer.ViewModels.InventoryViewModel>
+
+@{
+    ViewData["Title"] = "List of Available Inventories";
+}
+<body style="background-color:bisque">
+    <h1>InventoryList</h1>
+    <div>
+        <div class="text-success">
+            <p>@Html.ValidationMessage("Success") </p>
+        </div>
+    </div>
+    @{ if (Model != null)
+        {
+            <p>
+
+
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> </th>
+                        <th> </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            @Html.HiddenFor(modelItem => item.InventoryId)
+                            @Html.HiddenFor(modelItem => item.LocationId)
+                            @Html.HiddenFor(modelItem => item.CustomerId)
+
+                            <td>
+                                <a asp-controller="Customer" asp-action="ReturnToMain" asp-route-customerGuid="@item.CustomerId">Back To Main</a>
+                            </td>
+                            <td>
+                                <img class="img-responsive" src="@item.ProductPicture" alt="No Image Found" style="height:100px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                <a asp-controller="Customer" asp-action="AddingToCart" asp-route-LocationId="@item.LocationId" asp-route-InventoryId="@item.InventoryId" asp-route-ProductName="@item.ProductName" asp-route-customerGuid="@item.CustomerId">Add Item</a>
+
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h4>No Inventory To Display (OUT OF STOCK)</h4>
+
+        }
+    }
+</body>
