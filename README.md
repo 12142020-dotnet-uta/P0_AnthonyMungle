@@ -4,6 +4,7 @@
 Created a mock grocery store where users can buy varying products from multiple
 stores. 
 ## Technologies Used
+* .Net 
 * Microsoft Entity Framework 6.4
 * c#
 * HTML
